@@ -1,4 +1,3 @@
----
 apiVersion: v2
 entries:
   selenium-grid:
@@ -7,7 +6,7 @@ entries:
     description: A Helm chart for creating a Selenium Grid Server in Kubernetes
     name: selenium-grid
     sources:
-    - https://github.com/Flaconi/docker-selenium/tree/OPS-0-dynamic-protocal/charts/selenium-grid
+    - https://github.com/Flaconi/docker-selenium/tree/OPS-0-dynamic-protocal/charts
     urls:
     - selenium-grid.tgz
     version: 3.141.59
