@@ -8,4 +8,4 @@ entries:
     - https://github.com/SeleniumHQ/docker-selenium/tree/trunk/charts/selenium-grid
     urls:
     - selenium-grid.tgz
-    version: 4.5.3-20221024
+    version: 0.13.0
