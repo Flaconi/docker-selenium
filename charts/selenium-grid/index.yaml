@@ -5,7 +5,7 @@ entries:
     description: A Helm chart for creating a Selenium Grid Server in Kubernetes
     name: selenium-grid
     sources:
-    - https://github.com/Flaconi/docker-selenium/tree/OPS-0-dynamic-protocal/charts/selenium-grid
+    - https://github.com/SeleniumHQ/docker-selenium/tree/trunk/charts/selenium-grid
     urls:
     - selenium-grid.tgz
     version: 4.5.3-20221024
