@@ -10,6 +10,6 @@ entries:
     name: selenium-grid
     type: application
     urls:
-    - https://github.com/Flaconi/docker-selenium/tree/OPS-0-dynamic-protocal/charts/selenium-grid/selenium-grid-0.13.0.tgz
+    - https://github.com/Flaconi/docker-selenium/tree/trunk/charts/selenium-grid/selenium-grid-0.13.0.tgz
     version: 0.13.0
 generated: "2022-11-04T11:36:14.067987+01:00"
