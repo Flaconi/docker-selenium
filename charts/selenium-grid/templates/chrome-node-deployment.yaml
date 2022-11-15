@@ -26,7 +26,7 @@ spec:
       annotations:
         checksum/event-bus-configmap: {{ include (print $.Template.BasePath "/event-bus-configmap.yaml") . | sha256sum }}
         {{- with .Values.chromeNode.annotations }}
-          {{ toYaml . | nindent 8 }}
+          {{- toYaml . | nindent 8 }}
         {{- end }}
     spec:
     {{- with .Values.chromeNode.hostAliases }}
