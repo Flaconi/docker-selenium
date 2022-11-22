@@ -82,6 +82,8 @@ components:
     nodeSelector: {}
     # Priority class name for router pods
     priorityClassName: ""
+    extraVolumes: []
+    extraVolumeMounts: []
 
   # Configuration for distributor component
   distributor:
