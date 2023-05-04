@@ -49,6 +49,7 @@ components:
     annotations: {}
     # Router port
     port: 4444
+    svcport: 443
     # Liveness probe settings
     livenessProbe:
       enabled: true
@@ -81,6 +82,8 @@ components:
     nodeSelector: {}
     # Priority class name for router pods
     priorityClassName: ""
+    extraVolumes: []
+    extraVolumeMounts: []
 
   # Configuration for distributor component
   distributor:
