@@ -81,6 +81,13 @@ Ingress fullname
 {{- end -}}
 
 {{/*
+Service Account fullname
+*/}}
+{{- define "seleniumGrid.serviceAccount.fullname" -}}
+{{- .Values.serviceAccount.name | default "selenium-serviceaccount" | trunc 63 | trimSuffix "-" -}}
+{{- end -}}
+
+{{/*
 Is autoscaling using KEDA enabled
 */}}
 {{- define "seleniumGrid.useKEDA" -}}
@@ -110,6 +117,8 @@ template:
         {{ toYaml . | nindent 6 }}
       {{- end }}
   spec:
+    serviceAccountName: {{ template "seleniumGrid.serviceAccount.fullname" . }}
+    serviceAccount: {{ template  "seleniumGrid.serviceAccount.fullname" . }}
     restartPolicy: {{ and (eq (include "seleniumGrid.useKEDA" .) "true") (eq .Values.autoscaling.scalingType "job") | ternary "Never" "Always" }}
   {{- with .node.hostAliases }}
     hostAliases: {{ toYaml . | nindent 6 }}
@@ -156,6 +165,9 @@ template:
       {{- with .node.livenessProbe }}
         livenessProbe: {{- toYaml . | nindent 10 }}
       {{- end }}
+    {{- if .node.sidecars }}
+      {{- toYaml .node.sidecars | nindent 6 }}
+    {{- end }}
   {{- if or .Values.global.seleniumGrid.imagePullSecret .node.imagePullSecret }}
     imagePullSecrets:
       - name: {{ default .Values.global.seleniumGrid.imagePullSecret .node.imagePullSecret }}
@@ -186,9 +198,9 @@ Get the url of the grid. If the external url can be figured out from the ingress
 */}}
 {{- define "seleniumGrid.url" -}}
 {{- if and .Values.ingress.enabled .Values.ingress.hostname (ne .Values.ingress.hostname "selenium-grid.local") -}}
-http{{if .Values.ingress.tls}}s{{end}}://{{.Values.ingress.hostname}}
+http{{if .Values.ingress.tls}}s{{end}}://{{- if eq .Values.basicAuth.enabled true}}{{ .Values.basicAuth.username}}:{{ .Values.basicAuth.password}}@{{- end}}{{.Values.ingress.hostname}}
 {{- else -}}
-http://{{ include ($.Values.isolateComponents | ternary "seleniumGrid.router.fullname" "seleniumGrid.hub.fullname") $ }}.{{ .Release.Namespace }}:{{ $.Values.components.router.port }}
+http://{{- if eq .Values.basicAuth.enabled true}}{{ .Values.basicAuth.username}}:{{ .Values.basicAuth.password}}@{{- end}}{{ include ($.Values.isolateComponents | ternary "seleniumGrid.router.fullname" "seleniumGrid.hub.fullname") $ }}.{{ .Release.Namespace }}:{{ $.Values.components.router.port }}
 {{- end }}
 {{- end -}}
 
@@ -196,7 +208,7 @@ http://{{ include ($.Values.isolateComponents | ternary "seleniumGrid.router.ful
 Graphql Url of the hub or the router
 */}}
 {{- define "seleniumGrid.graphqlURL" -}}
-http://{{ include ($.Values.isolateComponents | ternary "seleniumGrid.router.fullname" "seleniumGrid.hub.fullname") $ }}.{{ .Release.Namespace }}:{{ $.Values.components.router.port }}/graphql
+http://{{- if eq .Values.basicAuth.enabled true}}{{ .Values.basicAuth.username}}:{{ .Values.basicAuth.password}}@{{- end}}{{ include ($.Values.isolateComponents | ternary "seleniumGrid.router.fullname" "seleniumGrid.hub.fullname") $ }}.{{ .Release.Namespace }}:{{ $.Values.components.router.port }}/graphql
 {{- end -}}
 
 {{/*
