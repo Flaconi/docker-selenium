@@ -62,6 +62,10 @@ spec:
           ports:
             - containerPort: {{ .Values.components.router.port }}
               protocol: TCP
+          volumeMounts:
+          {{- if .Values.components.router.extraVolumeMounts }}
+            {{- toYaml .Values.components.router.extraVolumeMounts | nindent 12 }}
+          {{- end }}
         {{- if .Values.components.router.livenessProbe.enabled }}
           livenessProbe:
             httpGet:
@@ -107,4 +111,8 @@ spec:
     {{- with .Values.components.router.priorityClassName }}
       priorityClassName: {{ . }}
     {{- end }}
+      volumes:
+      {{- if .Values.components.router.extraVolumes }}
+        {{ toYaml .Values.components.router.extraVolumes | nindent 8 }}
+      {{- end }}
 {{- end }}
