@@ -24,7 +24,7 @@ spec:
   ports:
     - name: tcp-router
       protocol: TCP
-      port: {{ .Values.components.router.port }}
+      port: {{ .Values.components.router.svcport }}
       targetPort: {{ .Values.components.router.port }}
       {{- if and (eq $.Values.components.router.serviceType "NodePort") $.Values.components.router.nodePort }}
       nodePort: {{ $.Values.components.router.nodePort }}
