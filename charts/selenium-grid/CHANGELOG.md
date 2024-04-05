@@ -1,23 +1,107 @@
-# Change Log
+## :heavy_check_mark: selenium-grid-0.26.4
 
-All notable changes to this helm chart will be documented in this file.
+- Chart is using image tag 4.16.1-20231219
+
+### Fixed
+- fix(chart): Remove trailing slash from default subPath value (#2076) :: Viet Nguyen Duc
+
+### Changed
+- Update chart CHANGELOG [skip ci] :: Selenium CI Bot
+
+## :heavy_check_mark: selenium-grid-0.26.3
+
+- Chart is using image tag 4.16.1-20231219
+
+### Added
+- feat(chart): Simplify to access Selenium Grid from outside of Kubernetes (#2073) :: Viet Nguyen Duc
+- feat(chart): Simplify to change log level in Kubernetes (#2072) :: Viet Nguyen Duc
+
+### Fixed
+- bug: ENV variable SE_VNC_PASSWORD contains sensitive data (#2061) :: Viet Nguyen Duc
+
+### Changed
+- Update tag in docs and files :: Selenium CI Bot
+- Update chart CHANGELOG [skip ci] :: Selenium CI Bot
+
+## :heavy_check_mark: selenium-grid-0.26.2
+
+- Chart is using image tag 4.16.1-20231212
+
+### Changed
+- Update tag in docs and files :: Selenium CI Bot
+- Update chart CHANGELOG [skip ci] :: Selenium CI Bot
+
+## :heavy_check_mark: selenium-grid-0.26.1
+
+- Chart is using image tag 4.16.1-20231208
+
+### Added
+- Add script to generate chart CHANGELOG after released (#2054) :: Viet Nguyen Duc
+- feat(chart): Append subPath to ENV variable SE_NODE_GRID_URL (#2053) :: Viet Nguyen Duc
+
+### Changed
+- Update tag in docs and files :: Selenium CI Bot
+
+## :heavy_check_mark: selenium-grid-0.26.0
+
+- Chart is using image tag 4.16.0-20231206
+
+### Added
+- feat(chart): Add default annotations for ingress nginx controller (#2047) :: Viet Nguyen Duc
+- feat: Video image with based FFmpeg-6.1 on Ubuntu-22.04 (#2042) :: Viet Nguyen Duc
+
+### Fixed
+- bug(#1824): Container ENV SE_NODE_SESSION_TIMEOUT not take effect (#2044) :: Viet Nguyen Duc
+- bug(#2038): Rollback io.opentelemetry 1.31.0 - add test tracing enabled (#2040) :: Viet Nguyen Duc
+
+### Changed
+- Update tag in docs and files :: Selenium CI Bot
+- Update chart CHANGELOG [skip ci] :: Viet Nguyen Duc
+- test(chart): Parallel tests execution against autoscaling in Kubernetes (#2046) :: Viet Nguyen Duc
+- test(chart): Chart template render and assert output (#2043) :: Viet Nguyen Duc
+- test(chart): Add test for setting registry to pull images (#2036) :: Viet Nguyen Duc
+
+## :heavy_check_mark: 0.25.3
+
+### Changed
+- Update image tag to 4.16.0-20231206
+- Update tag in docs and files :: Selenium CI Bot
+- test: Add sanity test for download file (#2034) [deploy] :: Viet Nguyen Duc
+- feat(chart): distribution registry can be set global and individual component (#2030) :: Viet Nguyen Duc
+- Update tag in docs and files [skip ci] :: Selenium CI Bot
+- test: Sanity tests Selenium Grid chart via Makefile commands (#2029) :: Viet Nguyen Duc
+- Feature run selenium tests grid on kubernetes via helm chart (#2027) :: Amar Deep Singh
+- feat: CI Bot bump chart version along with new deploy image version (#2028) :: Viet Nguyen Duc
+- Update NodeChrome support latest version from GoogleChromeLabs (#2018) :: Viet Nguyen Duc
+- Update tag in docs and files [skip ci] :: Selenium CI Bot
+- corrected typo in selenium grid charts (#2010) :: Thabelo Ramabulana
+
+## :heavy_check_mark: 0.25.1
+
+### Changed
+- Update image tag to 4.15.0-20231110
+- Bug: Error setting name in helm release #2006 #2007 (#2009) :: Viet Nguyen Duc
+
+## :heavy_check_mark: 0.25.0
+
+### Changed
+- Update image tag to 4.15.0-20231110
+- feat(helm-test): Added helm test and linting (#2003) :: Amar Deep Singh
+- Update tag in docs and files [skip ci] :: Selenium CI Bot
+- Update tag in docs and files [skip ci] :: Selenium CI Bot
+- feat: Adding port to nodes service (#1996) :: Viet Nguyen Duc
 
 ## :heavy_check_mark: 0.24.0
 
-### Added
-
-- Update tag in docs and files [skip ci] :: Selenium CI Bot
-- Bumping chart version :: Diego Molina
-- Fix minor issues after PR #1881 and #1981 (#1983) :: Viet Nguyen Duc
-- Improve default value for videoRecorder in chart (#1984) :: Viet Nguyen Duc
-- Improve chart templates in the section videoRecorder (#1987) :: Viet Nguyen Duc
-- Update to Selenium 4.15.0 (#1990) :: Luis Correia
-- feat(autoscaling): Unified parameters to set scaled options for browser nodes (#1989) :: Viet Nguyen Duc
-- Add chart parameter ingress.paths to configure custom paths (#1994) :: Viet Nguyen Duc
-- feat: Adding port to nodes service (#1196) :: Viet Nguyen Duc
-
 ### Changed
 - Update image tag to 4.15.0-20231102
+- Bumping chart version :: Viet Nguyen Duc
+- Add chart parameter ingress.paths to configure custom paths (#1994) :: Viet Nguyen Duc
+- feat(autoscaling): Unified parameters to set scaled options for browser nodes (#1989) :: Viet Nguyen Duc
+- Update tag in docs and files [skip ci] :: Selenium CI Bot
+- Improve chart templates in the section videoRecorder (#1987) :: Viet Nguyen Duc
+- Improve default value for videoRecorder in chart (#1984) :: Viet Nguyen Duc
+- Fix minor issues after PR #1881 and #1981 (#1983) :: Viet Nguyen Duc
 
 ## :heavy_check_mark: 0.23.0
 

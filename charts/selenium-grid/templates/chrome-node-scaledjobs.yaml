@@ -9,8 +9,8 @@ metadata:
       {{- toYaml . | nindent 4 }}
     {{- end }}
   labels:
-    app: selenium-chrome-node
-    app.kubernetes.io/name: selenium-chrome-node
+    app: {{ template "seleniumGrid.chromeNode.fullname" . }}
+    app.kubernetes.io/name: {{ template "seleniumGrid.chromeNode.fullname" . }}
     {{- include "seleniumGrid.commonLabels" . | nindent 4 }}
     {{- with .Values.chromeNode.labels }}
       {{- toYaml . | nindent 4 }}
@@ -22,7 +22,7 @@ spec:
   {{- $podScope := deepCopy . -}}
   {{- $_ := set $podScope "name" (include "seleniumGrid.chromeNode.fullname" .) -}}
   {{- $_ =  set $podScope "node" .Values.chromeNode -}}
-  {{- $_ =  set $podScope "uploader" (get .Values.videoRecorder (.Values.videoRecorder.uploader | toString)) -}}
+  {{- $_ =  set $podScope "uploader" (get .Values.videoRecorder (.Values.videoRecorder.uploader.name | toString)) -}}
   {{- $_ =  set $podScope "podTemplate" (include "seleniumGrid.podTemplate" $podScope | fromYaml) }}
   {{- include "seleniumGrid.autoscalingTemplate" $podScope | nindent 2 }}
 {{- end }}
