@@ -213,6 +213,7 @@ components:
     annotations: {}
     # Router port
     port: 4444
+    svcport: 443
     nodePort: 30444
     # Wait for pod startup
     startupProbe:
